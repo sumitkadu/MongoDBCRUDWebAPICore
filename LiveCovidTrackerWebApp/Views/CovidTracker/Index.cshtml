@@ -1,0 +1,64 @@
+﻿@model LiveCovidTrackerWebApp.Models.Data
+
+@{
+    ViewData["Title"] = "CovidTracker";
+}
+
+<h1>CovidTracker</h1>
+
+<h6><u>Source: @Model.Source</u></h6>
+<h6><u>Last Refreshed: @Model.LastRefreshed</u></h6>
+
+<h3>Total:</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Confirmed</th>
+            <th>Recovered</th>
+            <th>Deaths</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>@Model.Total.Confirmed</td>
+        <td>@Model.Total.Recovered</td>
+        <td>@Model.Total.Deaths</td>
+        <td>@Model.Total.Active</td>
+    </tr>
+</table>
+<hr />
+<h3>Statewise:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>State</th>
+            <th>Confirmed</th>
+            <th>Recovered</th>
+            <th>Deaths</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Statewise)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Confirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recovered)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deaths)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
